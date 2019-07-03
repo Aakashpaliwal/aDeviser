@@ -1,0 +1,22 @@
+.home-bg {
+    background: url('../images/b3.jpg');
+    background-size: cover;
+    padding: 16% 5%;
+}
+.home-bg h5 {
+    color: #f49c42;
+    font-size: 2.2em;
+}
+.home-bg p {
+    color: #676767;
+    width: 500px;
+}
+.home-bg button {
+    background: #f8a640;
+    border-color: #f8a640;
+    padding: 8px 50px;
+}
+.home-bg button:hover {
+    background: #000;
+    border-color : #000;
+}

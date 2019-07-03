@@ -1,0 +1,13 @@
+.banner {
+    background: url('../images/b3.jpg');
+    background-size: cover;
+    padding: 1%;
+    margin-bottom: 50px;
+}
+.left-side-form {
+    background: #99d9ea;
+    padding: 10px;
+}
+.custom-nav-color {
+    background: #f8a640!important;
+}
