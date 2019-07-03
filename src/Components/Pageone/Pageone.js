@@ -141,9 +141,9 @@ export class Pageone extends Component {
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 right-side-padd">
               <div className="left-side-form">
                 <form>
                   <div class="form-group">
@@ -172,7 +172,7 @@ export class Pageone extends Component {
                     <textarea
                       class="form-control"
                       id="exampleFormControlTextarea1"
-                      rows="3"
+                      rows="6"
                       name="description"
                       value={this.state.description}
                       onChange={e => this.change(e)}
@@ -182,7 +182,8 @@ export class Pageone extends Component {
                 </form>
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 right-side-padd">
+              <div className="right-side-form">
               <form>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Fruit's Name</label>
@@ -220,14 +221,15 @@ export class Pageone extends Component {
                     required
                   />
                 </div>
-                <button
+               <center> <button
                   type="submit"
                   class="btn btn-warning mb-2"
                   onClick={e => this.onSubmit(e)}
                 >
                   Submit
-                </button>
+                </button></center>
               </form>
+              </div>
             </div>
           </div>
         </div>

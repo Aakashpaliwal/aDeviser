@@ -2,12 +2,23 @@
     background: url('../images/b3.jpg');
     background-size: cover;
     padding: 1%;
-    margin-bottom: 50px;
 }
 .left-side-form {
-    background: #99d9ea;
-    padding: 10px;
+    background: #f8a640;
 }
 .custom-nav-color {
     background: #f8a640!important;
 }
+.right-side-padd {
+    padding: 0!important;
+}
+.right-side-padd .left-side-form {
+padding: 20px
+}
+.right-side-padd .right-side-form {
+    padding: 20px
+    }
+
+    .right-side-form button {
+        background: #f8a640;
+    }
