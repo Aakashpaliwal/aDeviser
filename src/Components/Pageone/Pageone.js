@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./pageone.css";
 import { Link } from "react-router-dom";
+import SimpleReactValidator from "simple-react-validator";
 export class Pageone extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ export class Pageone extends Component {
       user_name: "",
       page_status: false
     };
+    this.validator = new SimpleReactValidator();
   }
 
   change = e => {
@@ -22,37 +24,43 @@ export class Pageone extends Component {
   };
   async onSubmit(e) {
     e.preventDefault();
-    this.state.fruits.push({
-      name: this.state.name,
-      description: this.state.description,
-      date: this.state.date,
-      user_name: this.state.user_name
-    });
-    console.log(this.state);
+    if (this.validator.allValid()) {
+      this.state.fruits.push({
+        name: this.state.name,
+        description: this.state.description,
+        date: this.state.date,
+        user_name: this.state.user_name
+      });
+      console.log(this.state);
 
-    sessionStorage.setItem("navbar_status", "true");
+      sessionStorage.setItem("navbar_status", "true");
 
-    localStorage.setItem("name", this.state.name);
-    localStorage.setItem("description", this.state.description);
-    localStorage.setItem("date", this.state.date);
-    localStorage.setItem("user_name", this.state.user_name);
-    localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
-    let new_Arr = localStorage.getItem("fruits_arr");
-    new_Arr = JSON.parse(new_Arr);
-    console.log("new", new_Arr);
-    //    var new_fruit_arr = new_Arr.concat(this.state.fruits)
-    //     this.setState({
-    //         new_fruits : new_fruit_arr
-    //     })
-    //    console.log(this.state.new_fruits)
-    this.setState({
-      name: "",
-      description: "",
-      date: "",
-      user_name: "",
-      page_status: true
-    });
-    alert("fruit " + this.state.name + " has been added.");
+      localStorage.setItem("name", this.state.name);
+      localStorage.setItem("description", this.state.description);
+      localStorage.setItem("date", this.state.date);
+      localStorage.setItem("user_name", this.state.user_name);
+      localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
+      let new_Arr = localStorage.getItem("fruits_arr");
+      new_Arr = JSON.parse(new_Arr);
+      console.log("new", new_Arr);
+      //    var new_fruit_arr = new_Arr.concat(this.state.fruits)
+      //     this.setState({
+      //         new_fruits : new_fruit_arr
+      //     })
+      //    console.log(this.state.new_fruits)
+      this.setState({
+        name: "",
+        description: "",
+        date: "",
+        user_name: "",
+        page_status: true
+      });
+      alert("fruit " + this.state.name + " has been added.");
+    } else {
+      this.validator.showMessages();
+      // rerender to show messages for the first time
+      this.forceUpdate();
+    }
   }
 
   render() {
@@ -68,8 +76,10 @@ export class Pageone extends Component {
     } else {
       pagetwostatus = (
         <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled Link</a>
-      </li>
+          <a class="nav-link disabled" href="#">
+            Disabled Link
+          </a>
+        </li>
       );
     }
     return (
@@ -163,6 +173,13 @@ export class Pageone extends Component {
                       <option>Kiwi</option>
                       <option>Pineapple</option>
                     </select>
+                    <span className="text-danger">
+                        {this.validator.message(
+                          "Fruit's Name",
+                          this.state.name,
+                          "required"
+                        )}
+                      </span>
                   </div>
 
                   <div class="form-group">
@@ -178,57 +195,81 @@ export class Pageone extends Component {
                       onChange={e => this.change(e)}
                       required
                     />
+                     <span className="text-danger">
+                        {this.validator.message(
+                          "Description",
+                          this.state.description,
+                          "required"
+                        )}
+                      </span>
                   </div>
                 </form>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 right-side-padd">
               <div className="right-side-form">
-              <form>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Fruit's Name</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Fruit's Name Here…"
-                    disabled
-                    value={this.state.name}
-                    name="name"
-                  />
-                </div>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Fruit's Name</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Fruit's Name Here…"
+                      disabled
+                      value={this.state.name}
+                      name="name"
+                    />
+                  </div>
 
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Added By</label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="User's Name…"
-                    name="user_name"
-                    value={this.state.user_name}
-                    onChange={e => this.change(e)}
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Date Added</label>
-                  <input
-                    class="form-control"
-                    type="date"
-                    placeholder="Enter Date"
-                    name="date"
-                    value={this.state.date}
-                    onChange={e => this.change(e)}
-                    required
-                  />
-                </div>
-               <center> <button
-                  type="submit"
-                  class="btn btn-warning mb-2"
-                  onClick={e => this.onSubmit(e)}
-                >
-                  Submit
-                </button></center>
-              </form>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Added By</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="User's Name…"
+                      name="user_name"
+                      value={this.state.user_name}
+                      onChange={e => this.change(e)}
+                      required
+                    />
+                     <span className="text-danger">
+                        {this.validator.message(
+                          "User Name",
+                          this.state.user_name,
+                          "required"
+                        )}
+                      </span>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Date Added</label>
+                    <input
+                      class="form-control"
+                      type="date"
+                      placeholder="Enter Date"
+                      name="date"
+                      value={this.state.date}
+                      onChange={e => this.change(e)}
+                      required
+                    />
+                     <span className="text-danger">
+                        {this.validator.message(
+                          "Date",
+                          this.state.date,
+                          "required"
+                        )}
+                      </span>
+                  </div>
+                  <center>
+                    {" "}
+                    <button
+                      type="submit"
+                      class="btn btn-warning mb-2"
+                      onClick={e => this.onSubmit(e)}
+                    >
+                      Submit
+                    </button>
+                  </center>
+                </form>
               </div>
             </div>
           </div>
