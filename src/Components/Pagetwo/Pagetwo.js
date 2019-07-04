@@ -10,7 +10,7 @@ export class Pagetwo extends Component {
     };
   }
   componentDidMount() {
-    let movies = sessionStorage.getItem("fruits_arr");
+    let movies = localStorage.getItem("fruits_arr");
     this.setState({
       userdata: JSON.parse(movies)
     });
@@ -56,13 +56,7 @@ export class Pagetwo extends Component {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav">
-              {/* <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <Link to="/">
-                  Home <span class="sr-only">(current)</span>
-                </Link>
-              </a>
-            </li> */}
+             
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <Link to="/Pageone">Page One</Link>
@@ -70,22 +64,7 @@ export class Pagetwo extends Component {
               </li>
 
               {pagetwostatus}
-              {/* <li class="nav-item">
-              <a class="nav-link" href="#">
-              <NavLink 
-          onClick={this.handleClick} 
-          className="nav-link" 
-          to="/pages"
-      >
-          ...
-      </NavLink>
-              </a>
-            </li> */}
-              {/* <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <Link to="/Pagetwo">Page Two</Link>
-                </a>
-              </li> */}
+             
             </ul>
           </div>
         </nav>
@@ -103,22 +82,11 @@ export class Pagetwo extends Component {
             </div>
           </div>
         </div>
-        {/* <h3>Fruit's Name</h3>
-        <p>{localStorage.getItem("name")}</p>
-        <h3>Fruit's Description</h3>
-        <p>{localStorage.getItem("description")}</p>
-        <h3>Added By</h3>
-        <p>{localStorage.getItem("user_name")}</p>
-        <h3>Date Added</h3>
-        <p>{localStorage.getItem("date")}</p>
-        <hr /> */}
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <div className="table-bg">
-              {/* <center>
-                <h5>Table Here</h5>
-              </center> */}
+         
               <br />
               <table className="table table-responsive-sm table-bordered">
                 <thead className="thead-dark">

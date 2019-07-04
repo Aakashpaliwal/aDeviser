@@ -33,27 +33,11 @@ export class Pageone extends Component {
       });
       console.log(this.state);
 
-      sessionStorage.setItem("navbar_status", "true");
-      
-      sessionStorage.setItem("name", this.state.name);
-      sessionStorage.setItem("description", this.state.description);
-      sessionStorage.setItem("date", this.state.date);
-      sessionStorage.setItem("user_name", this.state.user_name);
-      sessionStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
-
-      // localStorage.setItem("name", this.state.name);
-      // localStorage.setItem("description", this.state.description);
-      // localStorage.setItem("date", this.state.date);
-      // localStorage.setItem("user_name", this.state.user_name);
-      // localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
-      // let new_Arr = localStorage.getItem("fruits_arr");
-      // new_Arr = JSON.parse(new_Arr);
-      // console.log("new", new_Arr);
-      //    var new_fruit_arr = new_Arr.concat(this.state.fruits)
-      //     this.setState({
-      //         new_fruits : new_fruit_arr
-      //     })
-      //    console.log(this.state.new_fruits)
+      localStorage.setItem("name", this.state.name);
+      localStorage.setItem("description", this.state.description);
+      localStorage.setItem("date", this.state.date);
+      localStorage.setItem("user_name", this.state.user_name);
+      localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
       this.setState({
         name: "",
         description: "",
@@ -109,36 +93,12 @@ export class Pageone extends Component {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto nav">
-              {/* <li class="nav-item active">
-                <a class="nav-link" href="#">
-                  <Link to="/">
-                    Home <span class="sr-only">(current)</span>
-                  </Link>
-                </a>
-              </li> */}
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <Link to="/Pageone">Page One</Link>
                 </a>
               </li>
 
-              {/* {pagetwolink} */}
-              {/* <li class="nav-item">
-                <a class="nav-link" href="#">
-                <NavLink 
-            onClick={this.handleClick} 
-            className="nav-link" 
-            to="/pages"
-        >
-            ...
-        </NavLink>
-                </a>
-              </li> */}
-              {/* <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <Link to="/Pagetwo">Page Two</Link>
-                </a>
-              </li> */}
               {pagetwostatus}
             </ul>
           </div>
@@ -180,12 +140,12 @@ export class Pageone extends Component {
                       <option>Pineapple</option>
                     </select>
                     <span className="text-danger">
-                        {this.validator.message(
-                          "Fruit's Name",
-                          this.state.name,
-                          "required"
-                        )}
-                      </span>
+                      {this.validator.message(
+                        "Fruit's Name",
+                        this.state.name,
+                        "required"
+                      )}
+                    </span>
                   </div>
 
                   <div class="form-group">
@@ -201,13 +161,13 @@ export class Pageone extends Component {
                       onChange={e => this.change(e)}
                       required
                     />
-                     <span className="text-danger">
-                        {this.validator.message(
-                          "Description",
-                          this.state.description,
-                          "required"
-                        )}
-                      </span>
+                    <span className="text-danger">
+                      {this.validator.message(
+                        "Description",
+                        this.state.description,
+                        "required"
+                      )}
+                    </span>
                   </div>
                 </form>
               </div>
@@ -238,13 +198,13 @@ export class Pageone extends Component {
                       onChange={e => this.change(e)}
                       required
                     />
-                     <span className="text-danger">
-                        {this.validator.message(
-                          "User Name",
-                          this.state.user_name,
-                          "required"
-                        )}
-                      </span>
+                    <span className="text-danger">
+                      {this.validator.message(
+                        "User Name",
+                        this.state.user_name,
+                        "required"
+                      )}
+                    </span>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Date Added</label>
@@ -257,13 +217,13 @@ export class Pageone extends Component {
                       onChange={e => this.change(e)}
                       required
                     />
-                     <span className="text-danger">
-                        {this.validator.message(
-                          "Date",
-                          this.state.date,
-                          "required"
-                        )}
-                      </span>
+                    <span className="text-danger">
+                      {this.validator.message(
+                        "Date",
+                        this.state.date,
+                        "required"
+                      )}
+                    </span>
                   </div>
                   <center>
                     {" "}
