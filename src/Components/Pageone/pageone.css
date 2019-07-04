@@ -22,4 +22,10 @@
 
 .right-side-form button {
   background: #f8a640;
+  padding: 8px 50px;
+}
+.right-side-form button:hover {
+  background: #000;
+  border-color : #000;
+  color: #fff;
 }

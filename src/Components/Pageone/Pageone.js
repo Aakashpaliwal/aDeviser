@@ -34,15 +34,21 @@ export class Pageone extends Component {
       console.log(this.state);
 
       sessionStorage.setItem("navbar_status", "true");
+      
+      sessionStorage.setItem("name", this.state.name);
+      sessionStorage.setItem("description", this.state.description);
+      sessionStorage.setItem("date", this.state.date);
+      sessionStorage.setItem("user_name", this.state.user_name);
+      sessionStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
 
-      localStorage.setItem("name", this.state.name);
-      localStorage.setItem("description", this.state.description);
-      localStorage.setItem("date", this.state.date);
-      localStorage.setItem("user_name", this.state.user_name);
-      localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
-      let new_Arr = localStorage.getItem("fruits_arr");
-      new_Arr = JSON.parse(new_Arr);
-      console.log("new", new_Arr);
+      // localStorage.setItem("name", this.state.name);
+      // localStorage.setItem("description", this.state.description);
+      // localStorage.setItem("date", this.state.date);
+      // localStorage.setItem("user_name", this.state.user_name);
+      // localStorage.setItem("fruits_arr", JSON.stringify(this.state.fruits));
+      // let new_Arr = localStorage.getItem("fruits_arr");
+      // new_Arr = JSON.parse(new_Arr);
+      // console.log("new", new_Arr);
       //    var new_fruit_arr = new_Arr.concat(this.state.fruits)
       //     this.setState({
       //         new_fruits : new_fruit_arr

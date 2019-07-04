@@ -1,24 +1,44 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './pagetwo.css'
 export class Pagetwo extends Component {
   constructor() {
     super();
     this.state = {
-      userdata: []
+      userdata: [],
+      page_status : true
     };
   }
   componentDidMount() {
-    let movies = localStorage.getItem("fruits_arr");
+    let movies = sessionStorage.getItem("fruits_arr");
     this.setState({
       userdata: JSON.parse(movies)
     });
   }
 
   render() {
+    let pagetwostatus;
+    if (this.state.page_status) {
+      pagetwostatus = (
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <Link to="/Pagetwo">Page Two</Link>
+          </a>
+        </li>
+      );
+    } else {
+      pagetwostatus = (
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">
+            Disabled Link
+          </a>
+        </li>
+      );
+    }
     return (
       <div>
         {/*navbar */}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-nav-color">
           <a class="navbar-brand" href="#">
             <Link to="/">Home</Link>
           </a>
@@ -49,7 +69,7 @@ export class Pagetwo extends Component {
                 </a>
               </li>
 
-              {/* {pagetwolink} */}
+              {pagetwostatus}
               {/* <li class="nav-item">
               <a class="nav-link" href="#">
               <NavLink 
@@ -61,11 +81,11 @@ export class Pagetwo extends Component {
       </NavLink>
               </a>
             </li> */}
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link" href="#">
                   <Link to="/Pagetwo">Page Two</Link>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
@@ -92,12 +112,13 @@ export class Pagetwo extends Component {
         <h3>Date Added</h3>
         <p>{localStorage.getItem("date")}</p>
         <hr /> */}
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-12">
-              <center>
+              <div className="table-bg">
+              {/* <center>
                 <h5>Table Here</h5>
-              </center>
+              </center> */}
               <br />
               <table className="table table-responsive-sm table-bordered">
                 <thead className="thead-dark">
@@ -126,6 +147,7 @@ export class Pagetwo extends Component {
                   )}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
